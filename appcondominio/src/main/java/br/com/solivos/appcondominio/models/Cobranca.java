@@ -118,10 +118,10 @@ public class Cobranca implements Serializable {
 
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idmoradia")
+	@JoinColumn(name = "idmoradia", referencedColumnName = "id",nullable=false,unique=true)
 	private Moradia moradia;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idcondominio")
+	@JoinColumn(name = "idcondominio", referencedColumnName = "id",nullable=false,unique=true)
 	private Condominio condominio;
 }

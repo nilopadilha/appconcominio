@@ -1,7 +1,6 @@
 package br.com.solivos.appcondominio.models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.solivos.appcondominio.enums.TipoMoradia;
@@ -64,14 +63,14 @@ public class Moradia implements Serializable, Comparable<Moradia>{
 	@JoinColumn(name = "idbloco")
 	private Bloco bloco;
 
-	@OneToMany(mappedBy = "moradia", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "relacao", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	@OrderBy(value = "dataEntrada")
 	@Valid
-	private List<Relacao> relacoes = new ArrayList<>();
+	private List<Relacao> relacoes ;
 
-	@OneToMany(mappedBy = "moradia", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
+	@OneToMany(mappedBy = "cobraca", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@OrderBy(value = "numero, parcela")
-	private List<Cobranca> cobrancas = new ArrayList<>();
+	private List<Cobranca> cobrancas;
 
 	@Override
 	public int compareTo(Moradia o) {
